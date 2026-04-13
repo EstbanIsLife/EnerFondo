@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { animate, stagger, splitText } from 'animejs';
+import { animate, stagger } from 'animejs';
 import { 
   LayoutDashboard, 
   CircleDollarSign, 
@@ -19,22 +19,15 @@ interface SidebarProps {
 
 export function Sidebar({ currentView, setCurrentView, isOpen }: SidebarProps) {
   const logoRef = useRef<HTMLHeadingElement>(null);
-  const charsRef = useRef<Element[] | null>(null);
   const { t } = useLanguage();
 
-  useEffect(() => {
-    if (!logoRef.current) return;
-
-    // Split text into characters once when component mounts
-    const { chars } = splitText(logoRef.current, { words: false, chars: true });
-    charsRef.current = chars;
-  }, []);
-
   const handleLogoHover = () => {
-    if (!charsRef.current) return;
+    if (!logoRef.current) return;
+    
+    const chars = logoRef.current.querySelectorAll('.char');
     
     // Apply the requested animejs animation only on hover
-    animate(charsRef.current, {
+    animate(chars, {
       // Property keyframes
       y: [
         { to: '-1.10rem', ease: 'outExpo', duration: 1000 },
@@ -68,13 +61,17 @@ export function Sidebar({ currentView, setCurrentView, isOpen }: SidebarProps) {
           onMouseEnter={handleLogoHover}
           className="text-left group cursor-pointer w-full"
         >
-          <div id="animation" className="large grid centered square-grid">
+          <div id="animation" className="large grid centered square-grid overflow-visible">
             <h2 
               ref={logoRef} 
-              className="text-xl font-black text-emerald-50 font-headline flex" 
+              className="text-xl font-black text-emerald-50 font-headline flex overflow-visible" 
               style={{ fontSize: '1.5rem', letterSpacing: '0.06em' }}
             >
-              EnerFondo
+              {"EnerFondo".split('').map((char, i) => (
+                <span key={i} className="char inline-block" style={{ whiteSpace: 'pre' }}>
+                  {char}
+                </span>
+              ))}
             </h2>
           </div>
           <p className="text-[10px] text-zinc-500 font-medium tracking-widest mt-1 uppercase group-hover:text-emerald-400 transition-colors">{t('sidebar.subtitle')}</p>

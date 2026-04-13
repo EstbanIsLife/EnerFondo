@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { animate, stagger, splitText } from 'animejs';
+import { animate, stagger, splitText, createTimeline } from 'animejs';
 import { Globe, Menu, Ruler, Thermometer, Cloud, ShieldCheck, Leaf } from 'lucide-react';
 import { useLanguage } from '../lib/i18n/LanguageContext';
 
@@ -10,6 +10,9 @@ interface HomeViewProps {
 export function HomeView({ onEnter }: HomeViewProps) {
   const logoRef = useRef<HTMLHeadingElement>(null);
   const charsRef = useRef<Element[] | null>(null);
+  const heroTitleRef = useRef<HTMLHeadingElement>(null);
+  const timelineRef = useRef<any>(null);
+  const completeAnimRef = useRef<any>(null);
   const { t, language, setLanguage } = useLanguage();
 
   useEffect(() => {
@@ -19,6 +22,45 @@ export function HomeView({ onEnter }: HomeViewProps) {
     const { chars } = splitText(logoRef.current, { words: false, chars: true });
     charsRef.current = chars;
   }, []);
+
+  useEffect(() => {
+    if (!heroTitleRef.current) return;
+
+    // Reset innerHTML to original text before splitting again if language changes
+    heroTitleRef.current.innerHTML = t('home.heroTitle');
+
+    const { words, chars } = splitText(heroTitleRef.current, {
+      words: { wrap: 'clip' },
+      chars: true,
+    });
+
+    const tl = createTimeline({
+      loop: 5,
+      defaults: { ease: 'inOut(3)', duration: 900 },
+      onComplete: () => {
+        completeAnimRef.current = animate(chars, {
+          y: '0%',
+          duration: 900,
+          ease: 'inOut(3)',
+          delay: stagger(10, { from: 'random' })
+        });
+      }
+    });
+
+    tl.add(words, {
+      y: [($el: any) => +$el.dataset.line % 2 ? '100%' : '-100%', '0%'],
+    }, stagger(125))
+    .add(chars, {
+      y: ($el: any) => +$el.dataset.line % 2 ? '100%' : '-100%',
+    }, stagger(10, { from: 'random' }))
+    .init();
+
+    timelineRef.current = tl;
+
+    return () => {
+      tl.pause();
+    };
+  }, [t, language]);
 
   const handleLogoHover = () => {
     if (!charsRef.current) return;
@@ -98,7 +140,15 @@ export function HomeView({ onEnter }: HomeViewProps) {
         <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
         <div className="z-10 text-center px-4 max-w-4xl mx-auto mt-12">
-          <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-500">
+          <h1 
+            id="text-split"
+            ref={heroTitleRef}
+            onMouseEnter={() => {
+              completeAnimRef.current?.pause();
+              timelineRef.current?.restart();
+            }}
+            className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter mb-6 text-white overflow-hidden flex flex-wrap justify-center gap-x-4 md:gap-x-5 cursor-default"
+          >
             {t('home.heroTitle')}
           </h1>
           <p className="font-body text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -350,7 +400,7 @@ export function HomeView({ onEnter }: HomeViewProps) {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto w-full py-12 px-8">
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="text-emerald-500 font-bold text-xl tracking-tighter">EnerFondo</div>
-            <p className="font-body text-xs uppercase tracking-widest text-zinc-600">© 2024 EnerFondo. {t('home.footerTag')}</p>
+            <p className="font-body text-xs uppercase tracking-widest text-zinc-600">© 2026 EnerFondo. {t('home.footerTag')}</p>
           </div>
           <div className="flex flex-wrap justify-center gap-8">
             <a className="text-zinc-500 font-body text-xs uppercase tracking-widest hover:text-emerald-400 transition-colors" href="#">{t('home.privacy')}</a>

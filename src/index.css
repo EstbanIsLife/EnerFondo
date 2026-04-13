@@ -32,3 +32,14 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-zinc-700;
 }
+
+#text-split .text-xl {
+  font-size: 1.5rem;
+  color: currentColor;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+}
+
+#text-split span {
+  display: inline-block;
+}

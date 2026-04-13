@@ -173,7 +173,7 @@ export function ImpactReportView() {
             <FileText className="w-5 h-5" />
             {t('impact.downloadPdf')}
           </button>
-          <p className="text-[10px] text-center text-zinc-600 mt-4 relative z-10">{t('impact.version')} 2.4.1 (Jan 2024)</p>
+          <p className="text-[10px] text-center text-zinc-600 mt-4 relative z-10">{t('impact.version')} 2.4.1 (Jan 2026)</p>
         </div>
       </aside>
     </>

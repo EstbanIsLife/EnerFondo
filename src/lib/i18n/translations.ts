@@ -174,11 +174,11 @@ export const translations = {
       showcase: "SHOWCASE"
     },
     impact: {
-      title: "Impact Report 2024",
+      title: "Impact Report 2026",
       subtitle: "Real-time quantification of your contribution to SDG 7.",
       totalCo2Mitigated: "Total CO2 Mitigated",
       tons: "TONS",
-      vsLastYear: "vs 2023",
+      vsLastYear: "vs 2025",
       cleanEnergyYield: "Clean Energy Yield",
       mwh: "MWH",
       poweringHomes: "Powering 12k Homes",
@@ -486,11 +486,11 @@ export const translations = {
       showcase: "EXHIBICIÓN"
     },
     impact: {
-      title: "Reporte de Impacto 2024",
+      title: "Reporte de Impacto 2026",
       subtitle: "Cuantificación en tiempo real de tu contribución al ODS 7.",
       totalCo2Mitigated: "Total CO2 Mitigado",
       tons: "TONELADAS",
-      vsLastYear: "vs 2023",
+      vsLastYear: "vs 2025",
       cleanEnergyYield: "Rendimiento de Energía Limpia",
       mwh: "MWH",
       poweringHomes: "Alimentando 12k Hogares",

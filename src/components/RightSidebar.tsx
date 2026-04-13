@@ -113,7 +113,7 @@ export function RightSidebar() {
       <div className="px-2 text-[10px] text-zinc-600 flex flex-wrap gap-x-4 gap-y-2 uppercase font-black tracking-widest">
         <a href="#" className="hover:text-emerald-500 transition-colors">Privacy</a>
         <a href="#" className="hover:text-emerald-500 transition-colors">DAO Rules</a>
-        <span>© 2024 Veridian</span>
+        <span>© 2026 Veridian</span>
       </div>
       
     </aside>
