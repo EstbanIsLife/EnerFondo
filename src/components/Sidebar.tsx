@@ -37,7 +37,7 @@ export function Sidebar({ currentView, setCurrentView, isOpen }: SidebarProps) {
     animate(charsRef.current, {
       // Property keyframes
       y: [
-        { to: '-1.40rem', ease: 'outExpo', duration: 1000 },
+        { to: '-1.10rem', ease: 'outExpo', duration: 1000 },
         { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
       ],
       // Property specific parameters

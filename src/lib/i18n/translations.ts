@@ -1,7 +1,8 @@
 export const translations = {
   en: {
     common: {
-      startDiscussion: "Start Discussion"
+      startDiscussion: "Start Discussion",
+      cancel: "Cancel"
     },
     nav: {
       ecosystem: "Ecosystem",
@@ -140,7 +141,12 @@ export const translations = {
       governance: "Governance",
       proposals: "Proposals",
       shareInsight: "Share an insight or proposal...",
+      createPost: "Create Post",
+      postTitle: "Post Title",
+      postContent: "What's on your mind?",
+      addTag: "Add a tag (e.g. SOLAR)",
       post: "Post",
+      delete: "Delete",
       postedBy: "Posted by",
       ago: "ago",
       hours: "hours",
@@ -307,7 +313,8 @@ export const translations = {
   },
   es: {
     common: {
-      startDiscussion: "Iniciar Discusión"
+      startDiscussion: "Iniciar Discusión",
+      cancel: "Cancelar"
     },
     nav: {
       ecosystem: "Ecosistema",
@@ -446,7 +453,12 @@ export const translations = {
       governance: "Gobernanza",
       proposals: "Propuestas",
       shareInsight: "Comparte un insight o propuesta...",
+      createPost: "Crear Publicación",
+      postTitle: "Título de la publicación",
+      postContent: "¿Qué tienes en mente?",
+      addTag: "Añadir una etiqueta (ej. SOLAR)",
       post: "Publicar",
+      delete: "Eliminar",
       postedBy: "Publicado por",
       ago: "hace",
       hours: "horas",
