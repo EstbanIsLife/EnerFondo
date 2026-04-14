@@ -6,9 +6,10 @@ interface TopNavProps {
   toggleSidebar: () => void;
   setCurrentView?: (view: string) => void;
   currentView?: string;
+  onOpenAbout?: () => void;
 }
 
-export function TopNav({ isSidebarOpen, toggleSidebar, setCurrentView, currentView }: TopNavProps) {
+export function TopNav({ isSidebarOpen, toggleSidebar, setCurrentView, currentView, onOpenAbout }: TopNavProps) {
   const { t, language, setLanguage } = useLanguage();
 
   const toggleLanguage = () => {
@@ -51,6 +52,7 @@ export function TopNav({ isSidebarOpen, toggleSidebar, setCurrentView, currentVi
             {t('nav.governance')}
           </button>
           <button 
+            onClick={onOpenAbout}
             className="text-zinc-400 hover:text-emerald-500 transition-all text-sm font-medium whitespace-nowrap"
           >
             {t('nav.about')}

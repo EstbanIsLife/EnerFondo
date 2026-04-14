@@ -12,6 +12,7 @@ import { LoginView } from './components/LoginView';
 import { SettingsView } from './components/SettingsView';
 import { MarketplaceView } from './components/MarketplaceView';
 import { ProjectDetailsView } from './components/ProjectDetailsView';
+import { AboutModal } from './components/AboutModal';
 import { PenSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { LanguageProvider, useLanguage } from './lib/i18n/LanguageContext';
@@ -69,6 +70,7 @@ function AppContent() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [selectedProject, setSelectedProject] = useState('gamma');
   const [isCreatePostModalOpen, setIsCreatePostModalOpen] = useState(false);
+  const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [posts, setPosts] = useState<PostData[]>(INITIAL_POSTS);
   const { t } = useLanguage();
 
@@ -113,6 +115,7 @@ function AppContent() {
           toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} 
           setCurrentView={setCurrentView}
           currentView={currentView}
+          onOpenAbout={() => setIsAboutModalOpen(true)}
         />
         
         <main className="flex-1 p-8 mt-16">
@@ -165,6 +168,11 @@ function AppContent() {
         isOpen={isCreatePostModalOpen} 
         onClose={() => setIsCreatePostModalOpen(false)} 
         onSubmit={handleCreatePost} 
+      />
+
+      <AboutModal 
+        isOpen={isAboutModalOpen}
+        onClose={() => setIsAboutModalOpen(false)}
       />
     </div>
   );
