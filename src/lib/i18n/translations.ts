@@ -208,6 +208,16 @@ export const translations = {
       downloadPdf: "Download PDF Report",
       version: "Version"
     },
+    login: {
+      title: "Access the Syndicate",
+      subtitle: "Authenticate to access the living ledger.",
+      email: "Email Address",
+      password: "Password",
+      signIn: "Sign In",
+      or: "OR",
+      connectWallet: "Connect Web3 Wallet",
+      back: "Back to Home"
+    },
     settings: {
       title: "Settings",
       subtitle: "Manage your account preferences and security.",
@@ -519,6 +529,16 @@ export const translations = {
       detailedBreakdown: "Desglose detallado para fines fiscales o de cumplimiento.",
       downloadPdf: "Descargar Reporte PDF",
       version: "Versión"
+    },
+    login: {
+      title: "Acceder al Sindicato",
+      subtitle: "Autentícate para acceder al libro mayor.",
+      email: "Correo Electrónico",
+      password: "Contraseña",
+      signIn: "Iniciar Sesión",
+      or: "O",
+      connectWallet: "Conectar Billetera Web3",
+      back: "Volver al Inicio"
     },
     settings: {
       title: "Configuración",

@@ -8,6 +8,7 @@ import { ImpactReportView } from './components/ImpactReportView';
 import { InvestmentsView } from './components/InvestmentsView';
 import { ProjectsView } from './components/ProjectsView';
 import { HomeView } from './components/HomeView';
+import { LoginView } from './components/LoginView';
 import { SettingsView } from './components/SettingsView';
 import { MarketplaceView } from './components/MarketplaceView';
 import { ProjectDetailsView } from './components/ProjectDetailsView';
@@ -91,7 +92,11 @@ function AppContent() {
   };
 
   if (currentView === 'home') {
-    return <HomeView onEnter={() => setCurrentView('dashboard')} />;
+    return <HomeView onEnter={() => setCurrentView('login')} />;
+  }
+
+  if (currentView === 'login') {
+    return <LoginView onLogin={() => setCurrentView('dashboard')} onBack={() => setCurrentView('home')} />;
   }
 
   return (
